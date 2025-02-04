@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pengguna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-200">
+    <div class="w-full max-w-md p-8 bg-white shadow-md rounded-lg">
+        <h2 class="text-3xl font-semibold text-gray-700 text-center mb-6">Edit Data Tamu</h2>
+        
+        <!-- Form Edit Pengguna -->
+        <form action="/guestbook/update/<%= guest.GuestBookID %>" method="POST" class="space-y-6">
+            
+            <!-- Input Nama -->
+            <div>
+                <label for="nama" class="block text-sm font-medium text-gray-700">Nama Tamu</label>
+                <input type="text" name="nama" id="nama" value="<%= guest.NamaTamu %>" 
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                    required>
+            </div>
+            
+            <!-- Input Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Tamu</label>
+                <input type="email" name="email" id="email" value="<%= guest.EmailTamu %>" 
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                    required>
+            </div>
+
+            <!-- Input Telepon -->
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Telepon Tamu</label>
+                <input type="text" name="phone" id="phone" value="<%= guest.PhoneTamu %>" 
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                    required>
+            </div>
+
+            <!-- Dropdown Kamar -->
+            <div>
+                <label for="RoomID" class="block text-sm font-medium text-gray-700">Pilih Kamar</label>
+                <select name="RoomID" id="RoomID" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                    <option value="" disabled>Pilih Kamar</option>
+                    <% rooms.forEach(room => { %>
+                        <option value="<%= room.RoomID %>" <%= room.RoomID == guest.RoomID ? 'selected' : '' %>>
+                            <%= room.RoomNumber %> - <%= room.Type %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <!-- Input Check-In Time -->
+            <div>
+                <label for="CheckInTime" class="block text-sm font-medium text-gray-700">Check-In Time</label>
+                <input type="datetime-local" name="CheckInTime" id="CheckInTime" value="<%= guest.CheckInTime %>" 
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                    required>
+            </div>
+
+            <!-- Input Check-Out Time -->
+            <div>
+                <label for="CheckOutTime" class="block text-sm font-medium text-gray-700">Check-Out Time</label>
+                <input type="datetime-local" name="CheckOutTime" id="CheckOutTime" value="<%= guest.CheckOutTime %>" 
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" 
+                    required>
+            </div>
+
+            <!-- Input Notes -->
+            <div>
+                <label for="Notes" class="block text-sm font-medium text-gray-700">Catatan</label>
+                <textarea name="Notes" id="Notes" rows="4" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <%= guest.Notes %>
+                </textarea>
+            </div>
+
+            <!-- Tombol Submit -->
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">Update Data Tamu</button>
+            
+            <!-- Tombol Kembali -->
+            <div class="mt-4 text-center">
+                <a href="/guestbook" class="text-blue-500 hover:text-blue-700">Kembali ke Daftar Tamu</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
