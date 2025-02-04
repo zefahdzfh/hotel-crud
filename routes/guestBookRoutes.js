@@ -16,11 +16,9 @@ router.post('/store', GuestBookController.store);
 router.get('/edit/:id', GuestBookController.edit);
 
 // Route untuk memperbarui data tamu berdasarkan ID
-// Pastikan menggunakan PUT atau POST yang sesuai dengan kebutuhan
 router.put('/update/:id', GuestBookController.update);
 
 // Route untuk menghapus tamu berdasarkan ID
-// Pastikan Anda menangani DELETE dengan benar di controller
 router.delete('/delete/:id', GuestBookController.remove);
 
 export default router;

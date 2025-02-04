@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import methodOverride from 'method-override';
 import guestBookRoutes from './routes/guestBookRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
+import methodOverride from 'method-override';
 
 // Menggunakan dotenv untuk mengelola variabel lingkungan
 dotenv.config();
@@ -12,14 +12,14 @@ const PORT = process.env.PORT || 3000;
 // Mengatur view engine untuk EJS
 app.set('view engine', 'ejs');
 
+// Middleware untuk method override
+app.use(methodOverride('_method'));
+
 // Middleware untuk menyajikan file statis (misalnya gambar, CSS, dll)
 app.use(express.static('public'));
 
 // Middleware untuk parsing URL encoded (untuk menangani data form)
 app.use(express.urlencoded({ extended: true }));
-
-// Middleware untuk mendukung method PUT dan DELETE dalam form HTML
-app.use(methodOverride('_method'));
 
 // Halaman utama akan mengarah ke '/guestbook'
 app.get('/', (req, res) => {

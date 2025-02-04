@@ -67,13 +67,14 @@
 
                     <!-- Aksi Edit dan Hapus -->
                     <div class="card-actions mt-4 flex justify-between">
-                        <form action="/guestbook/update/<%= guests[i].GuestBookID %>" method="POST">
+                        <form action="/guestbook/update/<%= guests[i].GuestBookID %>?_method=PUT" method="POST">
                             <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 focus:outline-none">Edit</button>
                         </form>
                         
-                       <form action="/guestbook/delete/<%= guests.GuestBookID %>?_method=DELETE" method="POST">
-    <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">Hapus</button>
-</form>
+                        <form action="/guestbook/delete/<%= guests[i].GuestBookID %>?_method=DELETE" method="POST">
+                            <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">Hapus</button>
+                        </form>
+                        
 
                     </div>
                     

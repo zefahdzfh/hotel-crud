@@ -44,7 +44,7 @@ const GuestBookController = {
         try {
             const { NamaTamu, EmailTamu, PhoneTamu, RoomID, CheckInTime, CheckOutTime, Notes } = req.body;
             await GuestBook.update(req.params.id, { NamaTamu, EmailTamu, PhoneTamu, RoomID, CheckInTime, CheckOutTime, Notes });
-            res.redirect('/guestbook');  // Redirect ke guestbook setelah update
+            res.redirect('/guestbook');
         } catch (error) {
             res.status(500).send('Gagal memperbarui data tamu.');
         }
@@ -53,7 +53,7 @@ const GuestBookController = {
     remove: async (req, res) => {
         try {
             await GuestBook.remove(req.params.id);
-            res.redirect('/guestbook');  // Redirect setelah data dihapus
+            res.redirect('/guestbook');
         } catch (error) {
             res.status(500).send('Gagal menghapus data tamu.');
         }
